@@ -27,9 +27,55 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
     `grid-cols-19`,
   ];
   const gridCols: string = gameWidths[boardSize - 3];
-  const padding: number = 10;
+  const padding: number = 15;
+  const boardWidth: string =
+    unitSize * boardSize +
+    (2 * padding + (Number(boardSize - 3) - 1)) * 2 +
+    "px";
 
-  useEffect(() => {}, [board]); //check winner
+  useEffect(() => {
+    checkWinner(isPlayerOneActive ? "O" : "X");
+  }, [board]); //check winner
+
+  function checkWinner(playerName: string) {
+    //Check rows
+    for (let row = 0; row < board.length; row++) {
+      if (board[row].every((field) => field.status === playerName)) {
+        setGameOver(true);
+        board[row].map((field) => (field.winner = true));
+        console.log(playerName + " has won");
+        return;
+      }
+    }
+
+    //Check columns
+    for (let col = 0; col < boardSize; col++) {
+      if (board.every((row) => row[col].status === playerName)) {
+        setGameOver(true);
+        console.log(playerName + " has won");
+        board.map((row) => (row[col].winner = true));
+        return;
+      }
+    }
+
+    //Check diagonal
+    if (board.every((row, index) => row[index].status === playerName)) {
+      setGameOver(true);
+      console.log(playerName + " has won");
+      return;
+    }
+
+    //Check reverse diagonal
+    if (
+      board.every(
+        (row, index) => row[boardSize - index - 1].status === playerName,
+      )
+    ) {
+      setGameOver(true);
+      console.log(playerName + " has won");
+      return;
+    }
+  }
 
   function onIncreaseSize() {
     if (boardSize === maxSize) return;
@@ -37,6 +83,7 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
     setBoardSize(newBoardSize);
     const updatedBoard: Board = newBoard(newBoardSize);
     setBoard(updatedBoard);
+    setGameOver(false);
   }
 
   function onDecreaseSize(): void {
@@ -45,10 +92,12 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
     setBoardSize(newBoardSize);
     const updatedBoard: Board = newBoard(newBoardSize);
     setBoard(updatedBoard);
+    setGameOver(false);
   }
 
   function clearBoard(): void {
     setBoard(newBoard(boardSize));
+    setGameOver(false);
   }
 
   function handleTurn(): void {
@@ -76,6 +125,7 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
     colIdx: number,
     curField: Field,
   ): void {
+    if (gameOver) return;
     handleTurn();
     console.log(
       (isPlayerOneActive ? "X on " : "O on ") +
@@ -93,12 +143,13 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
           return { ...fld, status: isPlayerOneActive ? "X" : "O" };
         });
       });
+
       return updatedBoard;
     });
   }
 
   return (
-    <>
+    <div style={{ width: boardWidth }} className="mt-3">
       {" "}
       <Options
         onClear={clearBoard}
@@ -107,20 +158,19 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
         onIncreaseSize={onIncreaseSize}
       />
       <div
-        className={`grid ${gridCols} border-1 p-2`}
+        className={`grid ${gridCols} gap-1 rounded-2xl border-2 border-white bg-blue-400`}
         style={{
-          width: `${unitSize * boardSize + 2 * padding}px`,
-          height: `${unitSize * boardSize + 2 * padding}px`,
+          padding: padding,
+          height: boardWidth,
         }}
       >
         {board.map((row: Field[], rowIdx: number) => {
           return row.map((field: Field, colIdx: number) => {
             return (
               <GameField
-                key={`row${rowIdx}`}
-                rowIdx={rowIdx}
-                colIdx={colIdx}
-                handleClick={handleFieldClick}
+                gameOver={gameOver}
+                key={`row${rowIdx}col${colIdx}`}
+                handleClick={() => handleFieldClick(rowIdx, colIdx, field)}
                 unitSize={unitSize}
                 field={field}
               />
@@ -128,6 +178,6 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
           });
         })}{" "}
       </div>
-    </>
+    </div>
   );
 }

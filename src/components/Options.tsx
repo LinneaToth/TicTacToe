@@ -1,10 +1,12 @@
 import React from "react";
+import Button from "./Button";
 
 interface OptionProps {
   onIncreaseSize: () => void;
   onDecreaseSize: () => void;
   onClear: () => void;
   boardSize: number;
+  gameOver: boolean;
 }
 
 export default function Options({
@@ -12,17 +14,16 @@ export default function Options({
   onIncreaseSize,
   onClear,
   boardSize,
+  gameOver,
 }: OptionProps) {
   return (
-    <div>
-      <button onClick={onDecreaseSize}>◁</button>
-      <span>
+    <div className="mb-3 flex flex-wrap items-center justify-center">
+      <Button onClick={onDecreaseSize} content="◁" bgcolor="bg-blue-400" />
+      <span className="mr-3 ml-3 text-blue-950">
         {boardSize} x {boardSize}
       </span>
-      <button onClick={onIncreaseSize}>▷</button>
-      <button className="block" onClick={onClear}>
-        Restart Game
-      </button>
+      <Button onClick={onIncreaseSize} content="▷" bgcolor="bg-blue-400" />
+      <Button onClick={onClear} content="↺" bgcolor="bg-purple-400" />
     </div>
   );
 }

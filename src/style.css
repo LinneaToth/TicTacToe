@@ -3,6 +3,18 @@
 
 .game-font {
     font-family: "Architects Daughter", cursive, sans-serif;
-    font-weight: 400;
-    font-style: bold;
+    font-weight: 500;
 }
+
+body {
+    background-color: #eff5ff;
+    height: 100vh;
+    overflow: hidden;
+    padding-top: 15vh;
+
+    #root {
+        height: 100vh;
+    }
+}
+
+/* If screen is wide, transform size a couple of times? */
