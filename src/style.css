@@ -1,1 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 @import "tailwindcss";
+
+.game-font {
+    font-family: "Architects Daughter", cursive, sans-serif;
+    font-weight: 400;
+    font-style: bold;
+}
