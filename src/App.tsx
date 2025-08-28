@@ -22,7 +22,7 @@ function App() {
         </h2>
       </header>
       <main className="flex h-full w-full content-center justify-center">
-        <Game unitSize={unitSize} />
+        <Game unitSize={unitSize} maxSize={5} minSize={3} />
       </main>
     </div>
   );

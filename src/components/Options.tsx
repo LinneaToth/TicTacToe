@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "./Button";
 
 interface OptionProps {
@@ -6,7 +5,6 @@ interface OptionProps {
   onDecreaseSize: () => void;
   onClear: () => void;
   boardSize: number;
-  gameOver: boolean;
 }
 
 export default function Options({
@@ -14,7 +12,6 @@ export default function Options({
   onIncreaseSize,
   onClear,
   boardSize,
-  gameOver,
 }: OptionProps) {
   return (
     <div className="mb-3 flex flex-wrap items-center justify-center">

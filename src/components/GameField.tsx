@@ -11,7 +11,7 @@ export default function GameField({
   handleClick,
   unitSize,
   field,
-  gameOver = { gameOver },
+  gameOver,
 }: FieldProps) {
   const cursor: string =
     field.status === "" && !gameOver ? "cursor-pointer" : "cursor-arrow";
