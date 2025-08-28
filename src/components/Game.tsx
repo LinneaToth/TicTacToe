@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { type Field, type Board, type GameProps } from "../types/types";
+import { type Field, type Board } from "../types/types";
 import GameField from "./GameField";
 import Options from "./Options.tsx";
 
