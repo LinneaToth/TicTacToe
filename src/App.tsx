@@ -11,7 +11,7 @@ function App() {
     <div>
       {" "}
       <header
-        className="bg-blue-400` m-auto rounded-2xl border-2 border-white bg-blue-400"
+        className="bg-blue-400` m-auto rounded-2xl border-2 border-white bg-blue-400 select-none"
         style={{ width: "208px" }}
       >
         <h1 className="game-font mt-2 text-center text-3xl text-blue-950 text-white text-shadow-md">

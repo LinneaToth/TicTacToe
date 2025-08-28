@@ -38,6 +38,15 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
   }, [board]); //check winner
 
   function checkWinner(playerName: string) {
+    // Check draw
+    const drawChecked = board.map((row) =>
+      row.every((field) => field.status !== ""),
+    );
+    if (drawChecked.every((checkedRow) => checkedRow === true)) {
+      console.log("it's a draw.");
+      setGameOver(true);
+    }
+
     //Check rows
     for (let row = 0; row < board.length; row++) {
       if (board[row].every((field) => field.status === playerName)) {
@@ -60,6 +69,9 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
 
     //Check diagonal
     if (board.every((row, index) => row[index].status === playerName)) {
+      board.map((row, index) => {
+        row[index].winner = true;
+      });
       setGameOver(true);
       console.log(playerName + " has won");
       return;
@@ -71,6 +83,9 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
         (row, index) => row[boardSize - index - 1].status === playerName,
       )
     ) {
+      board.map((row, index) => {
+        row[boardSize - index - 1].winner = true;
+      });
       setGameOver(true);
       console.log(playerName + " has won");
       return;
@@ -158,7 +173,7 @@ export default function Game({ unitSize }: GameProps): React.JSX.Element {
         onIncreaseSize={onIncreaseSize}
       />
       <div
-        className={`grid ${gridCols} gap-1 rounded-2xl border-2 border-white bg-blue-400`}
+        className={`grid ${gridCols} items-center justify-items-center gap-1 rounded-2xl border-2 border-white bg-blue-400`}
         style={{
           padding: padding,
           height: boardWidth,

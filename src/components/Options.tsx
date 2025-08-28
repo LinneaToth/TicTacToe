@@ -19,7 +19,7 @@ export default function Options({
   return (
     <div className="mb-3 flex flex-wrap items-center justify-center">
       <Button onClick={onDecreaseSize} content="◁" bgcolor="bg-blue-400" />
-      <span className="mr-3 ml-3 text-blue-950">
+      <span className="mr-3 ml-3 text-blue-950 select-none">
         {boardSize} x {boardSize}
       </span>
       <Button onClick={onIncreaseSize} content="▷" bgcolor="bg-blue-400" />
