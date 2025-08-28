@@ -49,8 +49,6 @@ export default function Game({
       id: i,
     }));
   }
-  console.log(board);
-
   useEffect(() => {
     if (gameOver) return; //Guard, ensuring I don't get an infinite loop where the effect changes the board AND listens for board changes
     const playerName = isPlayerOneActive ? "O" : "X";
@@ -72,7 +70,6 @@ export default function Game({
       });
 
       if (col.every((f) => f.status === playerName)) {
-        console.log(playerName + " won!");
         showWinningFields(winnersCol);
         setGameOver(true);
         return;
@@ -104,18 +101,27 @@ export default function Game({
       if (index % boardSize === 0) colCount--;
       return index % boardSize === colCount;
     });
-    if (
-      diagonalUp.every((f) => f.status === playerName) ||
-      diagonalDown.every((f) => f.status === playerName)
-    ) {
-      console.log(playerName + " won!");
+
+    if (diagonalDown.every((f) => f.status === playerName)) {
+      const winnersDiagonalDown = diagonalDown.map((f) => {
+        return f.id;
+      });
+      showWinningFields(winnersDiagonalDown);
+      setGameOver(true);
+      return;
+    }
+
+    if (diagonalUp.every((f) => f.status === playerName)) {
+      const winnersDiagonalUp = diagonalUp.map((f) => {
+        return f.id;
+      });
+      showWinningFields(winnersDiagonalUp);
       setGameOver(true);
       return;
     }
 
     // Check draw
     if (board.every((field) => field.status !== "")) {
-      console.log("it's a draw.");
       setGameOver(true);
     }
   }, [board, isPlayerOneActive, boardSize, gameOver]); //check winner
