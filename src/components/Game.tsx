@@ -9,16 +9,7 @@ interface GameProps {
   minSize: number;
 }
 
-const gameWidths: string[] = [
-  `grid-cols-3`,
-  `grid-cols-4`,
-  `grid-cols-5`,
-  `grid-cols-6`,
-  `grid-cols-7`,
-  `grid-cols-8`,
-  `grid-cols-9`,
-  `grid-cols-19`,
-];
+const gameWidths: string[] = [`grid-cols-3`, `grid-cols-4`, `grid-cols-5`];
 
 export default function Game({
   unitSize,
@@ -155,7 +146,7 @@ export default function Game({
   }
 
   return (
-    <div style={{ width: boardWidth }} className="mt-3">
+    <main style={{ width: boardWidth }} className="mt-3">
       {" "}
       <Options
         onClear={clearBoard}
@@ -182,6 +173,6 @@ export default function Game({
           );
         })}{" "}
       </div>
-    </div>
+    </main>
   );
 }

@@ -1,26 +1,12 @@
 import "./style.css";
 import Game from "./components/Game.tsx";
+import Header from "./components/Header.tsx";
 
 function App() {
-  const unitSize: number = 50;
-
   return (
-    <div>
-      {" "}
-      <header
-        className="bg-blue-400` m-auto rounded-2xl border-2 border-white bg-blue-400 select-none"
-        style={{ width: "208px" }}
-      >
-        <h1 className="game-font mt-2 text-center text-3xl text-blue-950 text-white text-shadow-md">
-          Tic-Tac-Toe
-        </h1>
-        <h2 className="mb-2 text-center text-sm text-blue-950 text-white italic">
-          React ∘ TS ∘ Tailwind ∘ Vite
-        </h2>
-      </header>
-      <main className="flex h-full w-full content-center justify-center">
-        <Game unitSize={unitSize} maxSize={5} minSize={3} />
-      </main>
+    <div className="mr-auto ml-auto flex h-full w-full flex-col items-center">
+      <Header />
+      <Game unitSize={50} maxSize={5} minSize={3} />
     </div>
   );
 }

@@ -14,9 +14,9 @@ export default function Options({
   boardSize,
 }: OptionProps) {
   return (
-    <div className="mb-3 flex flex-wrap items-center justify-center">
+    <div className="mb-3 flex w-full items-center justify-center">
       <Button onClick={onDecreaseSize} content="◁" bgcolor="bg-blue-400" />
-      <span className="mr-1 ml-1 text-blue-950 select-none">
+      <span className="text-blue-950 select-none">
         {boardSize} x {boardSize}
       </span>
       <Button onClick={onIncreaseSize} content="▷" bgcolor="bg-blue-400" />
