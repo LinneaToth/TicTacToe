@@ -2,10 +2,9 @@
 
 School assignment - work in progress! A simple game, made with React, TypeScript and Tailwind, using Vite. 
 
-![Preview](./thumbnail.jpg)
-
-[Try it out! 🎮](https://linneatoth.github.io/TicTacToe/)
-
+|   |   |
+|---|---|
+|![Preview](./thumbnail.jpg)   |  [Try it out! 🎮](https://linneatoth.github.io/TicTacToe/)|
 
 ## Features
 - Turned-base progress, alternating between X and O
