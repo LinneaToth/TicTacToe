@@ -6,7 +6,7 @@ A simple Tic-Tac-Toe game built with React, TypeScript and Tailwind, using Vite.
 |![Preview](./thumbnail.jpg)   |  [Try it out! 🎮](https://linneatoth.github.io/TicTacToe/)|
 
 ## Features
-- Turned-based progress, alternating between X and O
+- Turn-based progress, alternating between X and O
 - App checks for winner on diagonal, horizontal and vertical rows after every turn
 - Winning row gets visual feedback
 - Game is locked on draw or win
