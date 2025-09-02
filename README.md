@@ -1,8 +1,6 @@
 # Tic-Tac-Toe
 
-A simple Tic-Tac-Toe game built with React, TypeScript and Tailwind, using Vite.  
-This project was made as a school assignment in my second semester of web development 🤓  
-
+A simple Tic-Tac-Toe game built with React, TypeScript and Tailwind, using Vite. This project was made as a school assignment in my second semester of web development!
 |   |   |
 |---|---|
 |![Preview](./thumbnail.jpg)   |  [Try it out! 🎮](https://linneatoth.github.io/TicTacToe/)|
