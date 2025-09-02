@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 
-A simple game, made with React, TypeScript and Tailwind and using Vite for a school assignment in my second semester of pursuing my new skill set as a webdev 🤓 
+A simple game, made through Vite with React, TypeScript and Tailwind for a school assignment in my second semester of pursuing my new skill set as a webdev 🤓 
 
 |   |   |
 |---|---|
